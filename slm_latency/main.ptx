@@ -1,0 +1,158 @@
+
+Fatbin elf code:
+================
+arch = sm_100a
+code version = [1,8]
+host = linux
+compile_size = 64bit
+
+Fatbin ptx code:
+================
+arch = sm_100
+code version = [8,7]
+host = linux
+compile_size = 64bit
+compressed
+ptxasOptions = -O3  
+
+//
+//
+//
+//
+//
+//
+
+.version 8.7
+.target sm_100
+.address_size 64
+
+//
+//
+
+.visible .entry _Z23benchmarkSLMLoadLatencyPyS_Pi(
+.param .u64 _Z23benchmarkSLMLoadLatencyPyS_Pi_param_0,
+.param .u64 _Z23benchmarkSLMLoadLatencyPyS_Pi_param_1,
+.param .u64 _Z23benchmarkSLMLoadLatencyPyS_Pi_param_2
+)
+{
+.reg .pred %p<3>;
+.reg .b32 %r<9>;
+.reg .b64 %rd<13>;
+//
+.shared .align 4 .b8 _ZZ23benchmarkSLMLoadLatencyPyS_PiE9sharedMem[128];
+ld.param.u64 %rd4, [_Z23benchmarkSLMLoadLatencyPyS_Pi_param_0];
+ld.param.u64 %rd5, [_Z23benchmarkSLMLoadLatencyPyS_Pi_param_1];
+ld.param.u64 %rd6, [_Z23benchmarkSLMLoadLatencyPyS_Pi_param_2];
+cvta.to.global.u64 %rd1, %rd6;
+mov.u32 %r1, %tid.x;
+setp.gt.u32 %p1, %r1, 31;
+@%p1 bra $L__BB0_2;
+mul.wide.u32 %rd7, %r1, 4;
+add.s64 %rd8, %rd1, %rd7;
+ld.global.u32 %r3, [%rd8];
+shl.b32 %r4, %r1, 2;
+mov.u32 %r5, _ZZ23benchmarkSLMLoadLatencyPyS_PiE9sharedMem;
+add.s32 %r6, %r5, %r4;
+st.shared.u32 [%r6], %r3;
+$L__BB0_2:
+bar.sync 0;
+ld.global.u32 %r7, [%rd1];
+//
+mov.u64 %rd9, %clock64;
+//
+ld.shared.u32 %r8, [_ZZ23benchmarkSLMLoadLatencyPyS_PiE9sharedMem];
+add.s32 %r2, %r8, %r7;
+//
+mov.u64 %rd10, %clock64;
+//
+setp.ne.s32 %p2, %r1, 0;
+@%p2 bra $L__BB0_4;
+cvta.to.global.u64 %rd11, %rd4;
+st.global.u64 [%rd11], %rd9;
+cvta.to.global.u64 %rd12, %rd5;
+st.global.u64 [%rd12], %rd10;
+st.global.u32 [%rd1], %r2;
+$L__BB0_4:
+ret;
+
+}
+
+
+Fatbin elf code:
+================
+arch = sm_100a
+code version = [1,8]
+host = linux
+compile_size = 64bit
+
+Fatbin ptx code:
+================
+arch = sm_100a
+code version = [8,7]
+host = linux
+compile_size = 64bit
+compressed
+ptxasOptions = -O3  
+
+//
+//
+//
+//
+//
+//
+
+.version 8.7
+.target sm_100a
+.address_size 64
+
+//
+//
+
+.visible .entry _Z23benchmarkSLMLoadLatencyPyS_Pi(
+.param .u64 _Z23benchmarkSLMLoadLatencyPyS_Pi_param_0,
+.param .u64 _Z23benchmarkSLMLoadLatencyPyS_Pi_param_1,
+.param .u64 _Z23benchmarkSLMLoadLatencyPyS_Pi_param_2
+)
+{
+.reg .pred %p<3>;
+.reg .b32 %r<9>;
+.reg .b64 %rd<13>;
+//
+.shared .align 4 .b8 _ZZ23benchmarkSLMLoadLatencyPyS_PiE9sharedMem[128];
+ld.param.u64 %rd4, [_Z23benchmarkSLMLoadLatencyPyS_Pi_param_0];
+ld.param.u64 %rd5, [_Z23benchmarkSLMLoadLatencyPyS_Pi_param_1];
+ld.param.u64 %rd6, [_Z23benchmarkSLMLoadLatencyPyS_Pi_param_2];
+cvta.to.global.u64 %rd1, %rd6;
+mov.u32 %r1, %tid.x;
+setp.gt.u32 %p1, %r1, 31;
+@%p1 bra $L__BB0_2;
+mul.wide.u32 %rd7, %r1, 4;
+add.s64 %rd8, %rd1, %rd7;
+ld.global.u32 %r3, [%rd8];
+shl.b32 %r4, %r1, 2;
+mov.u32 %r5, _ZZ23benchmarkSLMLoadLatencyPyS_PiE9sharedMem;
+add.s32 %r6, %r5, %r4;
+st.shared.u32 [%r6], %r3;
+$L__BB0_2:
+bar.sync 0;
+ld.global.u32 %r7, [%rd1];
+//
+mov.u64 %rd9, %clock64;
+//
+ld.shared.u32 %r8, [_ZZ23benchmarkSLMLoadLatencyPyS_PiE9sharedMem];
+add.s32 %r2, %r8, %r7;
+//
+mov.u64 %rd10, %clock64;
+//
+setp.ne.s32 %p2, %r1, 0;
+@%p2 bra $L__BB0_4;
+cvta.to.global.u64 %rd11, %rd4;
+st.global.u64 [%rd11], %rd9;
+cvta.to.global.u64 %rd12, %rd5;
+st.global.u64 [%rd12], %rd10;
+st.global.u32 [%rd1], %r2;
+$L__BB0_4:
+ret;
+
+}
+
