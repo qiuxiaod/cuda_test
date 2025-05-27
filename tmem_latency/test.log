@@ -1,0 +1,88 @@
+=============================================================================
+============== Test tcgen05.ld.sync.aligned.32x32b.x1 =====================
+=============================================================================
+TMEM Load Latency: 13 clock cycles
+TMEM Load Latency: 13 clock cycles
+TMEM Load Latency: 13 clock cycles
+TMEM Load Latency: 13 clock cycles
+TMEM Load Latency: 13 clock cycles
+TMEM Load Latency: 13 clock cycles
+TMEM Load Latency: 13 clock cycles
+TMEM Load Latency: 13 clock cycles
+=============================================================================
+============== Test tcgen05.ld.sync.aligned.32x32b.x2 =====================
+=============================================================================
+TMEM Load Latency: 13 clock cycles
+TMEM Load Latency: 13 clock cycles
+TMEM Load Latency: 13 clock cycles
+TMEM Load Latency: 13 clock cycles
+TMEM Load Latency: 13 clock cycles
+TMEM Load Latency: 13 clock cycles
+TMEM Load Latency: 13 clock cycles
+TMEM Load Latency: 13 clock cycles
+=============================================================================
+============== Test tcgen05.ld.sync.aligned.32x32b.x4 =====================
+=============================================================================
+TMEM Load Latency: 14 clock cycles
+TMEM Load Latency: 14 clock cycles
+TMEM Load Latency: 14 clock cycles
+TMEM Load Latency: 14 clock cycles
+TMEM Load Latency: 14 clock cycles
+TMEM Load Latency: 14 clock cycles
+TMEM Load Latency: 14 clock cycles
+TMEM Load Latency: 14 clock cycles
+=============================================================================
+============== Test tcgen05.ld.sync.aligned.32x32b.x8 =====================
+=============================================================================
+TMEM Load Latency: 16 clock cycles
+TMEM Load Latency: 16 clock cycles
+TMEM Load Latency: 16 clock cycles
+TMEM Load Latency: 16 clock cycles
+TMEM Load Latency: 16 clock cycles
+TMEM Load Latency: 16 clock cycles
+TMEM Load Latency: 16 clock cycles
+TMEM Load Latency: 16 clock cycles
+=============================================================================
+============== Test tcgen05.ld.sync.aligned.32x32b.x16 =====================
+=============================================================================
+TMEM Load Latency: 20 clock cycles
+TMEM Load Latency: 20 clock cycles
+TMEM Load Latency: 20 clock cycles
+TMEM Load Latency: 20 clock cycles
+TMEM Load Latency: 20 clock cycles
+TMEM Load Latency: 20 clock cycles
+TMEM Load Latency: 20 clock cycles
+TMEM Load Latency: 20 clock cycles
+=============================================================================
+============== Test tcgen05.ld.sync.aligned.32x32b.x32 =====================
+=============================================================================
+TMEM Load Latency: 28 clock cycles
+TMEM Load Latency: 28 clock cycles
+TMEM Load Latency: 28 clock cycles
+TMEM Load Latency: 28 clock cycles
+TMEM Load Latency: 28 clock cycles
+TMEM Load Latency: 28 clock cycles
+TMEM Load Latency: 28 clock cycles
+TMEM Load Latency: 28 clock cycles
+=============================================================================
+============== Test tcgen05.ld.sync.aligned.32x32b.x64 =====================
+=============================================================================
+TMEM Load Latency: 44 clock cycles
+TMEM Load Latency: 44 clock cycles
+TMEM Load Latency: 44 clock cycles
+TMEM Load Latency: 44 clock cycles
+TMEM Load Latency: 44 clock cycles
+TMEM Load Latency: 44 clock cycles
+TMEM Load Latency: 44 clock cycles
+TMEM Load Latency: 44 clock cycles
+=============================================================================
+============== Test tcgen05.ld.sync.aligned.32x32b.x128 =====================
+=============================================================================
+TMEM Load Latency: 76 clock cycles
+TMEM Load Latency: 76 clock cycles
+TMEM Load Latency: 76 clock cycles
+TMEM Load Latency: 76 clock cycles
+TMEM Load Latency: 76 clock cycles
+TMEM Load Latency: 76 clock cycles
+TMEM Load Latency: 76 clock cycles
+TMEM Load Latency: 76 clock cycles
