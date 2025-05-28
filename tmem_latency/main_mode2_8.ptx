@@ -36,7 +36,7 @@ ptxasOptions = -O3
 )
 {
 .reg .pred %p<4>;
-.reg .b32 %r<61>;
+.reg .b32 %r<51>;
 .reg .b64 %rd<13>;
 //
 .shared .align 4 .b8 _ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem[128];
@@ -89,30 +89,25 @@ tcgen05.st.sync.aligned.32x32b.x8.b32[%r2],{%r14, %r3, %r4, %r5, %r6, %r7, %r8, 
 
 //
 //
-tcgen05.ld.sync.aligned.32x32b.x8.b32{%r40, %r41, %r42, %r43, %r44, %r45, %r46, %r47},[%r48];
-
-//
-//
 tcgen05.wait::st.sync.aligned; 
 //
 //
-tcgen05.ld.sync.aligned.32x32b.x8.b32{%r49, %r50, %r51, %r52, %r53, %r54, %r55, %r56},[%r2];
+tcgen05.ld.sync.aligned.32x32b.x8.b32{%r40, %r41, %r42, %r43, %r44, %r45, %r46, %r47},[%r48];
 
 //
 //
 tcgen05.wait::ld.sync.aligned; 
 //
-add.s32 %r58, %r49, %r40;
-add.s32 %r10, %r58, %r14;
+add.s32 %r10, %r14, %r40;
 //
 mov.u64 %rd8, %clock64;
 //
 bar.sync 0;
 @%p2 bra $L__BB0_4;
-mov.b32 %r60, 512;
+mov.b32 %r50, 512;
 //
 {
-tcgen05.dealloc.cta_group::1.sync.aligned.b32 %r2, %r60; 
+tcgen05.dealloc.cta_group::1.sync.aligned.b32 %r2, %r50; 
 }
 //
 $L__BB0_4:
@@ -174,7 +169,7 @@ ptxasOptions = -O3
 )
 {
 .reg .pred %p<4>;
-.reg .b32 %r<61>;
+.reg .b32 %r<51>;
 .reg .b64 %rd<13>;
 //
 .shared .align 4 .b8 _ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem[128];
@@ -227,30 +222,25 @@ tcgen05.st.sync.aligned.32x32b.x8.b32[%r2],{%r14, %r3, %r4, %r5, %r6, %r7, %r8, 
 
 //
 //
-tcgen05.ld.sync.aligned.32x32b.x8.b32{%r40, %r41, %r42, %r43, %r44, %r45, %r46, %r47},[%r48];
-
-//
-//
 tcgen05.wait::st.sync.aligned; 
 //
 //
-tcgen05.ld.sync.aligned.32x32b.x8.b32{%r49, %r50, %r51, %r52, %r53, %r54, %r55, %r56},[%r2];
+tcgen05.ld.sync.aligned.32x32b.x8.b32{%r40, %r41, %r42, %r43, %r44, %r45, %r46, %r47},[%r48];
 
 //
 //
 tcgen05.wait::ld.sync.aligned; 
 //
-add.s32 %r58, %r49, %r40;
-add.s32 %r10, %r58, %r14;
+add.s32 %r10, %r14, %r40;
 //
 mov.u64 %rd8, %clock64;
 //
 bar.sync 0;
 @%p2 bra $L__BB0_4;
-mov.b32 %r60, 512;
+mov.b32 %r50, 512;
 //
 {
-tcgen05.dealloc.cta_group::1.sync.aligned.b32 %r2, %r60; 
+tcgen05.dealloc.cta_group::1.sync.aligned.b32 %r2, %r50; 
 }
 //
 $L__BB0_4:

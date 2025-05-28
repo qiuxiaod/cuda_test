@@ -45,9 +45,10 @@ __global__ void benchmarkTMEMLoadLatency(unsigned long long *d_start, unsigned l
     __syncthreads();
     unsigned long long start[2];
     unsigned long long end[2];
-    uint32_t val_array_tmp[REP];
+    
 
 #if TEST_MODE == 0
+        uint32_t val_array_tmp[REP];
         __syncthreads();
         __syncwarp();
         start[0] = clock64();
@@ -59,6 +60,7 @@ __global__ void benchmarkTMEMLoadLatency(unsigned long long *d_start, unsigned l
 
         end[0] = clock64();
 #elif TEST_MODE == 1
+        uint32_t val_array_tmp[REP];
         __syncthreads();
         __syncwarp();
         start[0] = clock64();
@@ -78,12 +80,13 @@ __global__ void benchmarkTMEMLoadLatency(unsigned long long *d_start, unsigned l
         start[0] = clock64();
 
         tmem_st_32dp32bNx<REP>(tmem_ptr, val_array);
-        tmem_ld_32dp32bNx<REP>(tmem_ptr1, val_array_tmp1);
         fence_view_async_tmem_store();
-        tmem_ld_32dp32bNx<REP>(tmem_ptr, val_array_tmp);
+
+        tmem_ld_32dp32bNx<REP>(tmem_ptr1, val_array_tmp1);
+        // tmem_ld_32dp32bNx<REP>(tmem_ptr, val_array_tmp);
         fence_view_async_tmem_load();
 
-        val_array[0] += val_array_tmp[0] + val_array_tmp1[0];
+        val_array[0] += val_array_tmp1[0];
         end[0] = clock64();
 #endif
     // if(warp_id < 4){
@@ -138,7 +141,7 @@ int main() {
         std::cout << "TMEM Store[0] + Load[0] Latency: " << latency << " clock cycles" << std::endl;
     #elif TEST_MODE == 2
         double latency = (h_end[0] - h_start[0]);
-        std::cout << "TMEM Store[0] + Load[1] + Load[0] Latency: " << latency << " clock cycles" << std::endl;
+        std::cout << "TMEM Store[0] + Load[1] Latency: " << latency << " clock cycles" << std::endl;
     #endif
     // Clean up
     cudaFree(d_start);
