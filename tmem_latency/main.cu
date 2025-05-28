@@ -28,6 +28,7 @@ __global__ void benchmarkTMEMLoadLatency(unsigned long long *d_start, unsigned l
     __syncthreads();
 
     uint32_t tmem_ptr = sharedMem[0];
+    uint32_t tmem_ptr1 = tmem_ptr + 128;
     
     uint32_t val_array[REP];
 
@@ -37,6 +38,7 @@ __global__ void benchmarkTMEMLoadLatency(unsigned long long *d_start, unsigned l
     }
     
     tmem_st_32dp32bNx<REP>(tmem_ptr, val_array);
+    tmem_st_32dp32bNx<REP>(tmem_ptr1, val_array);
 
     fence_view_async_tmem_store();
 
@@ -67,6 +69,21 @@ __global__ void benchmarkTMEMLoadLatency(unsigned long long *d_start, unsigned l
         fence_view_async_tmem_load();
 
         val_array[0] += val_array_tmp[0];
+        end[0] = clock64();
+
+#elif TEST_MODE == 2
+        uint32_t val_array_tmp1[REP];
+        __syncthreads();
+        __syncwarp();
+        start[0] = clock64();
+
+        tmem_st_32dp32bNx<REP>(tmem_ptr, val_array);
+        tmem_ld_32dp32bNx<REP>(tmem_ptr1, val_array_tmp1);
+        fence_view_async_tmem_store();
+        tmem_ld_32dp32bNx<REP>(tmem_ptr, val_array_tmp);
+        fence_view_async_tmem_load();
+
+        val_array[0] += val_array_tmp[0] + val_array_tmp1[0];
         end[0] = clock64();
 #endif
     // if(warp_id < 4){
@@ -115,10 +132,13 @@ int main() {
         // Calculate the latency in clock cycles
         double latency = (h_end[0] - h_start[0]);
         // Print the result
-        std::cout << "TMEM Load Latency: " << latency << " clock cycles" << std::endl;
+        std::cout << "TMEM Load[0] Latency: " << latency << " clock cycles" << std::endl;
     #elif TEST_MODE == 1
         double latency = (h_end[0] - h_start[0]);
-        std::cout << "TMEM Store + Load Latency: " << latency << " clock cycles" << std::endl;
+        std::cout << "TMEM Store[0] + Load[0] Latency: " << latency << " clock cycles" << std::endl;
+    #elif TEST_MODE == 2
+        double latency = (h_end[0] - h_start[0]);
+        std::cout << "TMEM Store[0] + Load[1] + Load[0] Latency: " << latency << " clock cycles" << std::endl;
     #endif
     // Clean up
     cudaFree(d_start);
