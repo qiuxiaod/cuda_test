@@ -92,6 +92,9 @@ tcgen05.st.sync.aligned.32x32b.x8.b32[%r2],{%r14, %r3, %r4, %r5, %r6, %r7, %r8, 
 tcgen05.wait::st.sync.aligned; 
 //
 //
+mov.u64 %rd8, %clock64;
+//
+//
 tcgen05.ld.sync.aligned.32x32b.x8.b32{%r40, %r41, %r42, %r43, %r44, %r45, %r46, %r47},[%r2];
 
 //
@@ -99,9 +102,6 @@ tcgen05.ld.sync.aligned.32x32b.x8.b32{%r40, %r41, %r42, %r43, %r44, %r45, %r46, 
 tcgen05.wait::ld.sync.aligned; 
 //
 add.s32 %r10, %r14, %r40;
-//
-mov.u64 %rd8, %clock64;
-//
 bar.sync 0;
 @%p2 bra $L__BB0_4;
 mov.b32 %r50, 512;
@@ -225,6 +225,9 @@ tcgen05.st.sync.aligned.32x32b.x8.b32[%r2],{%r14, %r3, %r4, %r5, %r6, %r7, %r8, 
 tcgen05.wait::st.sync.aligned; 
 //
 //
+mov.u64 %rd8, %clock64;
+//
+//
 tcgen05.ld.sync.aligned.32x32b.x8.b32{%r40, %r41, %r42, %r43, %r44, %r45, %r46, %r47},[%r2];
 
 //
@@ -232,9 +235,6 @@ tcgen05.ld.sync.aligned.32x32b.x8.b32{%r40, %r41, %r42, %r43, %r44, %r45, %r46, 
 tcgen05.wait::ld.sync.aligned; 
 //
 add.s32 %r10, %r14, %r40;
-//
-mov.u64 %rd8, %clock64;
-//
 bar.sync 0;
 @%p2 bra $L__BB0_4;
 mov.b32 %r50, 512;
