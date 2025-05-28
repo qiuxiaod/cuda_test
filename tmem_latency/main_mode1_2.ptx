@@ -83,16 +83,13 @@ tcgen05.st.sync.aligned.32x32b.x2.b32[%r2],{%r8, %r3};
 
 //
 //
-tcgen05.wait::st.sync.aligned; 
-//
-//
 tcgen05.ld.sync.aligned.32x32b.x2.b32{%r16, %r17},[%r2];
 
 //
 //
 tcgen05.wait::ld.sync.aligned; 
 //
-add.s32 %r4, %r8, %r16;
+add.s32 %r4, %r16, %r8;
 //
 mov.u64 %rd8, %clock64;
 //
@@ -204,16 +201,13 @@ tcgen05.st.sync.aligned.32x32b.x2.b32[%r2],{%r8, %r3};
 
 //
 //
-tcgen05.wait::st.sync.aligned; 
-//
-//
 tcgen05.ld.sync.aligned.32x32b.x2.b32{%r16, %r17},[%r2];
 
 //
 //
 tcgen05.wait::ld.sync.aligned; 
 //
-add.s32 %r4, %r8, %r16;
+add.s32 %r4, %r16, %r8;
 //
 mov.u64 %rd8, %clock64;
 //

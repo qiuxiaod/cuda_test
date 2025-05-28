@@ -64,7 +64,7 @@ __global__ void benchmarkTMEMLoadLatency(unsigned long long *d_start, unsigned l
         start[0] = clock64();
 
         tmem_st_32dp32bNx<REP>(tmem_ptr, val_array);
-        fence_view_async_tmem_store();
+        // fence_view_async_tmem_store();
         tmem_ld_32dp32bNx<REP>(tmem_ptr, val_array_tmp);
         fence_view_async_tmem_load();
 
