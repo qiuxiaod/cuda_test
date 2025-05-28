@@ -55,7 +55,7 @@ $L__BB0_2:
 setp.gt.u32 %p2, %r1, 31;
 bar.sync 0;
 ld.shared.u32 %r2, [_ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem];
-add.s32 %r18, %r2, 128;
+add.s32 %r15, %r2, 128;
 cvta.to.global.u64 %rd9, %rd6;
 mul.wide.u32 %rd10, %r1, 4;
 add.s64 %rd1, %rd9, %rd10;
@@ -66,7 +66,7 @@ tcgen05.st.sync.aligned.32x32b.x2.b32[%r2],{%r8, %r3};
 
 //
 //
-tcgen05.st.sync.aligned.32x32b.x2.b32[%r18],{%r8, %r3};
+tcgen05.st.sync.aligned.32x32b.x2.b32[%r15],{%r8, %r3};
 
 //
 //
@@ -79,6 +79,10 @@ bar.warp.sync -1;
 mov.u64 %rd7, %clock64;
 //
 //
+tcgen05.ld.sync.aligned.32x32b.x2.b32{%r13, %r14},[%r15];
+
+//
+//
 tcgen05.st.sync.aligned.32x32b.x2.b32[%r2],{%r8, %r3};
 
 //
@@ -86,13 +90,9 @@ tcgen05.st.sync.aligned.32x32b.x2.b32[%r2],{%r8, %r3};
 tcgen05.wait::st.sync.aligned; 
 //
 //
-tcgen05.ld.sync.aligned.32x32b.x2.b32{%r16, %r17},[%r18];
-
-//
-//
 tcgen05.wait::ld.sync.aligned; 
 //
-add.s32 %r4, %r8, %r16;
+add.s32 %r4, %r8, %r13;
 //
 mov.u64 %rd8, %clock64;
 //
@@ -176,7 +176,7 @@ $L__BB0_2:
 setp.gt.u32 %p2, %r1, 31;
 bar.sync 0;
 ld.shared.u32 %r2, [_ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem];
-add.s32 %r18, %r2, 128;
+add.s32 %r15, %r2, 128;
 cvta.to.global.u64 %rd9, %rd6;
 mul.wide.u32 %rd10, %r1, 4;
 add.s64 %rd1, %rd9, %rd10;
@@ -187,7 +187,7 @@ tcgen05.st.sync.aligned.32x32b.x2.b32[%r2],{%r8, %r3};
 
 //
 //
-tcgen05.st.sync.aligned.32x32b.x2.b32[%r18],{%r8, %r3};
+tcgen05.st.sync.aligned.32x32b.x2.b32[%r15],{%r8, %r3};
 
 //
 //
@@ -200,6 +200,10 @@ bar.warp.sync -1;
 mov.u64 %rd7, %clock64;
 //
 //
+tcgen05.ld.sync.aligned.32x32b.x2.b32{%r13, %r14},[%r15];
+
+//
+//
 tcgen05.st.sync.aligned.32x32b.x2.b32[%r2],{%r8, %r3};
 
 //
@@ -207,13 +211,9 @@ tcgen05.st.sync.aligned.32x32b.x2.b32[%r2],{%r8, %r3};
 tcgen05.wait::st.sync.aligned; 
 //
 //
-tcgen05.ld.sync.aligned.32x32b.x2.b32{%r16, %r17},[%r18];
-
-//
-//
 tcgen05.wait::ld.sync.aligned; 
 //
-add.s32 %r4, %r8, %r16;
+add.s32 %r4, %r8, %r13;
 //
 mov.u64 %rd8, %clock64;
 //

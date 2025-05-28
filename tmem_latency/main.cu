@@ -79,10 +79,12 @@ __global__ void benchmarkTMEMLoadLatency(unsigned long long *d_start, unsigned l
         __syncwarp();
         start[0] = clock64();
 
+        tmem_ld_32dp32bNx<REP>(tmem_ptr1, val_array_tmp1);
+        
         tmem_st_32dp32bNx<REP>(tmem_ptr, val_array);
         fence_view_async_tmem_store();
 
-        tmem_ld_32dp32bNx<REP>(tmem_ptr1, val_array_tmp1);
+        
         // tmem_ld_32dp32bNx<REP>(tmem_ptr, val_array_tmp);
         fence_view_async_tmem_load();
 
@@ -141,7 +143,7 @@ int main() {
         std::cout << "TMEM Store[0] + Load[0] Latency: " << latency << " clock cycles" << std::endl;
     #elif TEST_MODE == 2
         double latency = (h_end[0] - h_start[0]);
-        std::cout << "TMEM Store[0] + Load[1] Latency: " << latency << " clock cycles" << std::endl;
+        std::cout << "TMEM Load[1] + Store[0] Latency: " << latency << " clock cycles" << std::endl;
     #endif
     // Clean up
     cudaFree(d_start);

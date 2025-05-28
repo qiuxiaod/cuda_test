@@ -10,16 +10,16 @@ TMEM Load[0] Latency: 13 clock cycles
 TMEM Load[0] Latency: 13 clock cycles
 TMEM Load[0] Latency: 13 clock cycles
 =============================================================================
-=========== Test tcgen05.st+ld.sync.aligned.32x32b.x1 ==================
+=========== Test tcgen05.ld+st.sync.aligned.32x32b.x1 ==================
 =============================================================================
-TMEM Store[0] + Load[1] Latency: 25 clock cycles
-TMEM Store[0] + Load[1] Latency: 25 clock cycles
-TMEM Store[0] + Load[1] Latency: 25 clock cycles
-TMEM Store[0] + Load[1] Latency: 25 clock cycles
-TMEM Store[0] + Load[1] Latency: 25 clock cycles
-TMEM Store[0] + Load[1] Latency: 25 clock cycles
-TMEM Store[0] + Load[1] Latency: 25 clock cycles
-TMEM Store[0] + Load[1] Latency: 25 clock cycles
+TMEM Load[1] + Store[0] Latency: 16 clock cycles
+TMEM Load[1] + Store[0] Latency: 16 clock cycles
+TMEM Load[1] + Store[0] Latency: 16 clock cycles
+TMEM Load[1] + Store[0] Latency: 16 clock cycles
+TMEM Load[1] + Store[0] Latency: 16 clock cycles
+TMEM Load[1] + Store[0] Latency: 16 clock cycles
+TMEM Load[1] + Store[0] Latency: 16 clock cycles
+TMEM Load[1] + Store[0] Latency: 16 clock cycles
   
   
 =============================================================================
@@ -34,16 +34,16 @@ TMEM Load[0] Latency: 13 clock cycles
 TMEM Load[0] Latency: 13 clock cycles
 TMEM Load[0] Latency: 13 clock cycles
 =============================================================================
-=========== Test tcgen05.st+ld.sync.aligned.32x32b.x2 ==================
+=========== Test tcgen05.ld+st.sync.aligned.32x32b.x2 ==================
 =============================================================================
-TMEM Store[0] + Load[1] Latency: 25 clock cycles
-TMEM Store[0] + Load[1] Latency: 25 clock cycles
-TMEM Store[0] + Load[1] Latency: 25 clock cycles
-TMEM Store[0] + Load[1] Latency: 25 clock cycles
-TMEM Store[0] + Load[1] Latency: 25 clock cycles
-TMEM Store[0] + Load[1] Latency: 25 clock cycles
-TMEM Store[0] + Load[1] Latency: 25 clock cycles
-TMEM Store[0] + Load[1] Latency: 25 clock cycles
+TMEM Load[1] + Store[0] Latency: 16 clock cycles
+TMEM Load[1] + Store[0] Latency: 16 clock cycles
+TMEM Load[1] + Store[0] Latency: 16 clock cycles
+TMEM Load[1] + Store[0] Latency: 16 clock cycles
+TMEM Load[1] + Store[0] Latency: 16 clock cycles
+TMEM Load[1] + Store[0] Latency: 16 clock cycles
+TMEM Load[1] + Store[0] Latency: 16 clock cycles
+TMEM Load[1] + Store[0] Latency: 16 clock cycles
   
   
 =============================================================================
@@ -58,16 +58,16 @@ TMEM Load[0] Latency: 14 clock cycles
 TMEM Load[0] Latency: 14 clock cycles
 TMEM Load[0] Latency: 14 clock cycles
 =============================================================================
-=========== Test tcgen05.st+ld.sync.aligned.32x32b.x4 ==================
+=========== Test tcgen05.ld+st.sync.aligned.32x32b.x4 ==================
 =============================================================================
-TMEM Store[0] + Load[1] Latency: 27 clock cycles
-TMEM Store[0] + Load[1] Latency: 27 clock cycles
-TMEM Store[0] + Load[1] Latency: 27 clock cycles
-TMEM Store[0] + Load[1] Latency: 27 clock cycles
-TMEM Store[0] + Load[1] Latency: 27 clock cycles
-TMEM Store[0] + Load[1] Latency: 27 clock cycles
-TMEM Store[0] + Load[1] Latency: 27 clock cycles
-TMEM Store[0] + Load[1] Latency: 27 clock cycles
+TMEM Load[1] + Store[0] Latency: 18 clock cycles
+TMEM Load[1] + Store[0] Latency: 18 clock cycles
+TMEM Load[1] + Store[0] Latency: 18 clock cycles
+TMEM Load[1] + Store[0] Latency: 18 clock cycles
+TMEM Load[1] + Store[0] Latency: 18 clock cycles
+TMEM Load[1] + Store[0] Latency: 18 clock cycles
+TMEM Load[1] + Store[0] Latency: 18 clock cycles
+TMEM Load[1] + Store[0] Latency: 18 clock cycles
   
   
 =============================================================================
@@ -82,16 +82,16 @@ TMEM Load[0] Latency: 16 clock cycles
 TMEM Load[0] Latency: 16 clock cycles
 TMEM Load[0] Latency: 16 clock cycles
 =============================================================================
-=========== Test tcgen05.st+ld.sync.aligned.32x32b.x8 ==================
+=========== Test tcgen05.ld+st.sync.aligned.32x32b.x8 ==================
 =============================================================================
-TMEM Store[0] + Load[1] Latency: 31 clock cycles
-TMEM Store[0] + Load[1] Latency: 31 clock cycles
-TMEM Store[0] + Load[1] Latency: 31 clock cycles
-TMEM Store[0] + Load[1] Latency: 31 clock cycles
-TMEM Store[0] + Load[1] Latency: 31 clock cycles
-TMEM Store[0] + Load[1] Latency: 31 clock cycles
-TMEM Store[0] + Load[1] Latency: 31 clock cycles
-TMEM Store[0] + Load[1] Latency: 31 clock cycles
+TMEM Load[1] + Store[0] Latency: 22 clock cycles
+TMEM Load[1] + Store[0] Latency: 22 clock cycles
+TMEM Load[1] + Store[0] Latency: 22 clock cycles
+TMEM Load[1] + Store[0] Latency: 22 clock cycles
+TMEM Load[1] + Store[0] Latency: 22 clock cycles
+TMEM Load[1] + Store[0] Latency: 22 clock cycles
+TMEM Load[1] + Store[0] Latency: 22 clock cycles
+TMEM Load[1] + Store[0] Latency: 22 clock cycles
   
   
 =============================================================================
@@ -106,16 +106,16 @@ TMEM Load[0] Latency: 20 clock cycles
 TMEM Load[0] Latency: 20 clock cycles
 TMEM Load[0] Latency: 20 clock cycles
 =============================================================================
-=========== Test tcgen05.st+ld.sync.aligned.32x32b.x16 ==================
+=========== Test tcgen05.ld+st.sync.aligned.32x32b.x16 ==================
 =============================================================================
-TMEM Store[0] + Load[1] Latency: 39 clock cycles
-TMEM Store[0] + Load[1] Latency: 39 clock cycles
-TMEM Store[0] + Load[1] Latency: 39 clock cycles
-TMEM Store[0] + Load[1] Latency: 39 clock cycles
-TMEM Store[0] + Load[1] Latency: 39 clock cycles
-TMEM Store[0] + Load[1] Latency: 39 clock cycles
-TMEM Store[0] + Load[1] Latency: 39 clock cycles
-TMEM Store[0] + Load[1] Latency: 39 clock cycles
+TMEM Load[1] + Store[0] Latency: 30 clock cycles
+TMEM Load[1] + Store[0] Latency: 30 clock cycles
+TMEM Load[1] + Store[0] Latency: 30 clock cycles
+TMEM Load[1] + Store[0] Latency: 30 clock cycles
+TMEM Load[1] + Store[0] Latency: 30 clock cycles
+TMEM Load[1] + Store[0] Latency: 30 clock cycles
+TMEM Load[1] + Store[0] Latency: 30 clock cycles
+TMEM Load[1] + Store[0] Latency: 30 clock cycles
   
   
 =============================================================================
@@ -130,16 +130,16 @@ TMEM Load[0] Latency: 28 clock cycles
 TMEM Load[0] Latency: 28 clock cycles
 TMEM Load[0] Latency: 28 clock cycles
 =============================================================================
-=========== Test tcgen05.st+ld.sync.aligned.32x32b.x32 ==================
+=========== Test tcgen05.ld+st.sync.aligned.32x32b.x32 ==================
 =============================================================================
-TMEM Store[0] + Load[1] Latency: 55 clock cycles
-TMEM Store[0] + Load[1] Latency: 55 clock cycles
-TMEM Store[0] + Load[1] Latency: 55 clock cycles
-TMEM Store[0] + Load[1] Latency: 55 clock cycles
-TMEM Store[0] + Load[1] Latency: 55 clock cycles
-TMEM Store[0] + Load[1] Latency: 55 clock cycles
-TMEM Store[0] + Load[1] Latency: 55 clock cycles
-TMEM Store[0] + Load[1] Latency: 55 clock cycles
+TMEM Load[1] + Store[0] Latency: 46 clock cycles
+TMEM Load[1] + Store[0] Latency: 46 clock cycles
+TMEM Load[1] + Store[0] Latency: 46 clock cycles
+TMEM Load[1] + Store[0] Latency: 46 clock cycles
+TMEM Load[1] + Store[0] Latency: 46 clock cycles
+TMEM Load[1] + Store[0] Latency: 46 clock cycles
+TMEM Load[1] + Store[0] Latency: 46 clock cycles
+TMEM Load[1] + Store[0] Latency: 46 clock cycles
   
   
 =============================================================================
@@ -154,15 +154,15 @@ TMEM Load[0] Latency: 44 clock cycles
 TMEM Load[0] Latency: 44 clock cycles
 TMEM Load[0] Latency: 44 clock cycles
 =============================================================================
-=========== Test tcgen05.st+ld.sync.aligned.32x32b.x64 ==================
+=========== Test tcgen05.ld+st.sync.aligned.32x32b.x64 ==================
 =============================================================================
-TMEM Store[0] + Load[1] Latency: 87 clock cycles
-TMEM Store[0] + Load[1] Latency: 87 clock cycles
-TMEM Store[0] + Load[1] Latency: 87 clock cycles
-TMEM Store[0] + Load[1] Latency: 87 clock cycles
-TMEM Store[0] + Load[1] Latency: 87 clock cycles
-TMEM Store[0] + Load[1] Latency: 87 clock cycles
-TMEM Store[0] + Load[1] Latency: 87 clock cycles
-TMEM Store[0] + Load[1] Latency: 87 clock cycles
+TMEM Load[1] + Store[0] Latency: 78 clock cycles
+TMEM Load[1] + Store[0] Latency: 78 clock cycles
+TMEM Load[1] + Store[0] Latency: 78 clock cycles
+TMEM Load[1] + Store[0] Latency: 78 clock cycles
+TMEM Load[1] + Store[0] Latency: 78 clock cycles
+TMEM Load[1] + Store[0] Latency: 78 clock cycles
+TMEM Load[1] + Store[0] Latency: 78 clock cycles
+TMEM Load[1] + Store[0] Latency: 78 clock cycles
   
   
