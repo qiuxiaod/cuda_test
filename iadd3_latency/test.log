@@ -1,0 +1,44 @@
+=============================================================================
+========================== Test IADD3 b2b x4 ===============================
+=============================================================================
+IADD Latency: 16 clock cycles
+IADD Latency: 16 clock cycles
+IADD Latency: 16 clock cycles
+IADD Latency: 16 clock cycles
+IADD Latency: 16 clock cycles
+IADD Latency: 16 clock cycles
+IADD Latency: 16 clock cycles
+IADD Latency: 16 clock cycles
+=============================================================================
+========================== Test IADD3 b2b x5 ===============================
+=============================================================================
+IADD Latency: 20 clock cycles
+IADD Latency: 20 clock cycles
+IADD Latency: 20 clock cycles
+IADD Latency: 20 clock cycles
+IADD Latency: 20 clock cycles
+IADD Latency: 20 clock cycles
+IADD Latency: 20 clock cycles
+IADD Latency: 20 clock cycles
+=============================================================================
+========================== Test IADD3 b2b x6 ===============================
+=============================================================================
+IADD Latency: 24 clock cycles
+IADD Latency: 24 clock cycles
+IADD Latency: 24 clock cycles
+IADD Latency: 24 clock cycles
+IADD Latency: 24 clock cycles
+IADD Latency: 24 clock cycles
+IADD Latency: 24 clock cycles
+IADD Latency: 24 clock cycles
+=============================================================================
+========================== Test IADD3 b2b x7 ===============================
+=============================================================================
+IADD Latency: 28 clock cycles
+IADD Latency: 28 clock cycles
+IADD Latency: 28 clock cycles
+IADD Latency: 28 clock cycles
+IADD Latency: 28 clock cycles
+IADD Latency: 28 clock cycles
+IADD Latency: 28 clock cycles
+IADD Latency: 28 clock cycles
