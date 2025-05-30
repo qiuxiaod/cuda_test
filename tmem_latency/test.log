@@ -42,6 +42,17 @@ TMEM Store[0] + Load[1] + Load[0] Latency: 27 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 27 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 27 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 27 clock cycles
+=============================================================================
+=========== Test fpu + tcgen05.ld+ld.sync.aligned.32x32b.x1 ==================
+=============================================================================
+TMEM FPU + Load[0] + Load[1] Latency: 17 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 17 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 17 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 17 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 17 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 17 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 17 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 17 clock cycles
   
   
 =============================================================================
@@ -88,6 +99,17 @@ TMEM Store[0] + Load[1] + Load[0] Latency: 27 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 27 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 27 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 27 clock cycles
+=============================================================================
+=========== Test fpu + tcgen05.ld+ld.sync.aligned.32x32b.x2 ==================
+=============================================================================
+TMEM FPU + Load[0] + Load[1] Latency: 19 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 19 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 19 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 19 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 19 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 19 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 19 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 19 clock cycles
   
   
 =============================================================================
@@ -134,6 +156,17 @@ TMEM Store[0] + Load[1] + Load[0] Latency: 30 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 30 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 30 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 30 clock cycles
+=============================================================================
+=========== Test fpu + tcgen05.ld+ld.sync.aligned.32x32b.x4 ==================
+=============================================================================
+TMEM FPU + Load[0] + Load[1] Latency: 20 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 20 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 20 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 20 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 20 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 20 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 20 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 20 clock cycles
   
   
 =============================================================================
@@ -180,6 +213,17 @@ TMEM Store[0] + Load[1] + Load[0] Latency: 36 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 36 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 36 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 36 clock cycles
+=============================================================================
+=========== Test fpu + tcgen05.ld+ld.sync.aligned.32x32b.x8 ==================
+=============================================================================
+TMEM FPU + Load[0] + Load[1] Latency: 34 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 34 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 36 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 32 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 34 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 36 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 34 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 34 clock cycles
   
   
 =============================================================================
@@ -226,6 +270,17 @@ TMEM Store[0] + Load[1] + Load[0] Latency: 48 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 48 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 48 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 48 clock cycles
+=============================================================================
+=========== Test fpu + tcgen05.ld+ld.sync.aligned.32x32b.x16 ==================
+=============================================================================
+TMEM FPU + Load[0] + Load[1] Latency: 43 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 43 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 43 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 43 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 43 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 43 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 43 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 43 clock cycles
   
   
 =============================================================================
@@ -272,6 +327,17 @@ TMEM Store[0] + Load[1] + Load[0] Latency: 72 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 72 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 72 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 72 clock cycles
+=============================================================================
+=========== Test fpu + tcgen05.ld+ld.sync.aligned.32x32b.x32 ==================
+=============================================================================
+TMEM FPU + Load[0] + Load[1] Latency: 61 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 61 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 61 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 61 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 61 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 61 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 61 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 61 clock cycles
   
   
 =============================================================================
@@ -318,5 +384,16 @@ TMEM Store[0] + Load[1] + Load[0] Latency: 120 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 120 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 120 clock cycles
 TMEM Store[0] + Load[1] + Load[0] Latency: 120 clock cycles
+=============================================================================
+=========== Test fpu + tcgen05.ld+ld.sync.aligned.32x32b.x64 ==================
+=============================================================================
+TMEM FPU + Load[0] + Load[1] Latency: 103 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 109 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 109 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 109 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 109 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 109 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 109 clock cycles
+TMEM FPU + Load[0] + Load[1] Latency: 109 clock cycles
   
   

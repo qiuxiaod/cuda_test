@@ -2,9 +2,12 @@
 #include "../inline_ptx_func.hpp"
 #include <cuda_runtime.h>
 
-#define SHARED_MEM_SIZE 32
-#define THD_NUM 128
+#define SHARED_MEM_SIZE 8192
 #define WARP_SIZE 32
+
+#ifndef THD_NUM
+#define THD_NUM 128
+#endif
 
 #ifndef REP
 #define REP 8
@@ -96,6 +99,45 @@ __global__ void benchmarkTMEMLoadLatency(unsigned long long *d_start, unsigned l
 
         val_array[0] += val_array_tmp[0] + val_array_tmp1[0];
         end[0] = clock64();
+#elif TEST_MODE == 4
+        uint32_t val_array_tmp1[REP];
+        
+        __syncthreads();
+        if(warp_id < 4){
+            __syncwarp();
+            start[0] = clock64();
+
+            tmem_ld_32dp32bNx<REP>(tmem_ptr1, val_array_tmp1);
+            tmem_ld_32dp32bNx<REP>(tmem_ptr, val_array_tmp);
+            fence_view_async_tmem_load();
+
+            val_array[0] += val_array_tmp[0] + val_array_tmp1[0];
+            end[0] = clock64();
+        }else{
+            // different fpu code seems will cause a small difference with small REP. For big REP, seems pretty stable
+            float* val_array_f32 = (float*)val_array;
+            for(int i = 0; i < REP; i++){
+                val_array_f32[i] += val_array_f32[i];
+            }
+            for(int i = 0; i < REP; i++){
+                val_array_f32[i] *= val_array_f32[i];
+            }
+            for(int i = 0; i < REP; i++){
+                val_array_f32[i] -= val_array_f32[i];
+            }
+            for(int i = 0; i < REP; i++){
+                val_array_f32[i] *= val_array_f32[i];
+            }
+            for(int i = 0; i < REP; i++){
+                val_array_f32[i] -= val_array_f32[i];
+            }
+            for(int i = 0; i < REP; i++){
+                val_array_f32[i] *= val_array_f32[i];
+            }
+           
+            // data[0] = (uint32_t)val_array_f32[0];
+        }
+        
 #endif
     // if(warp_id < 4){
 
@@ -119,6 +161,7 @@ __global__ void benchmarkTMEMLoadLatency(unsigned long long *d_start, unsigned l
     for(int i = 0; i < REP; i++){
         data[tid + i * THD_NUM] = val_array[i];
     }
+
 }
 
 int main() {
@@ -153,6 +196,9 @@ int main() {
     #elif TEST_MODE == 3
         double latency = (h_end[0] - h_start[0]);
         std::cout << "TMEM Load[0] + Load[1] Latency: " << latency << " clock cycles" << std::endl;
+    #elif TEST_MODE == 4
+        double latency = (h_end[0] - h_start[0]);
+        std::cout << "TMEM FPU + Load[0] + Load[1] Latency: " << latency << " clock cycles" << std::endl;
     #endif
     // Clean up
     cudaFree(d_start);

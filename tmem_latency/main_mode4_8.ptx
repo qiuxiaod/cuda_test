@@ -1,0 +1,402 @@
+
+Fatbin elf code:
+================
+arch = sm_100a
+code version = [1,8]
+host = linux
+compile_size = 64bit
+
+Fatbin ptx code:
+================
+arch = sm_100
+code version = [8,7]
+host = linux
+compile_size = 64bit
+compressed
+ptxasOptions = -O3  
+
+//
+//
+//
+//
+//
+//
+
+.version 8.7
+.target sm_100
+.address_size 64
+
+//
+//
+
+.visible .entry _Z24benchmarkTMEMLoadLatencyPyS_Pj(
+.param .u64 _Z24benchmarkTMEMLoadLatencyPyS_Pj_param_0,
+.param .u64 _Z24benchmarkTMEMLoadLatencyPyS_Pj_param_1,
+.param .u64 _Z24benchmarkTMEMLoadLatencyPyS_Pj_param_2
+)
+{
+.reg .pred %p<5>;
+.reg .b32 %r<78>;
+.reg .f32 %f<57>;
+.reg .b64 %rd<18>;
+//
+.shared .align 4 .b8 _ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem[32768];
+ld.param.u64 %rd6, [_Z24benchmarkTMEMLoadLatencyPyS_Pj_param_0];
+ld.param.u64 %rd7, [_Z24benchmarkTMEMLoadLatencyPyS_Pj_param_1];
+ld.param.u64 %rd8, [_Z24benchmarkTMEMLoadLatencyPyS_Pj_param_2];
+mov.u32 %r1, %tid.x;
+setp.gt.u32 %p1, %r1, 31;
+@%p1 bra $L__BB0_2;
+mov.u32 %r29, _ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem;
+mov.b32 %r30, 512;
+//
+tcgen05.alloc.cta_group::1.sync.aligned.shared::cta.b32 [%r29], %r30;
+//
+$L__BB0_2:
+bar.sync 0;
+ld.shared.u32 %r2, [_ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem];
+add.s32 %r40, %r2, 128;
+cvta.to.global.u64 %rd9, %rd8;
+mul.wide.u32 %rd10, %r1, 4;
+add.s64 %rd1, %rd9, %rd10;
+ld.global.u32 %r4, [%rd1];
+ld.global.u32 %r76, [%rd1+1024];
+ld.global.u32 %r75, [%rd1+2048];
+ld.global.u32 %r74, [%rd1+3072];
+ld.global.u32 %r73, [%rd1+4096];
+ld.global.u32 %r72, [%rd1+5120];
+ld.global.u32 %r71, [%rd1+6144];
+ld.global.u32 %r70, [%rd1+7168];
+//
+tcgen05.st.sync.aligned.32x32b.x8.b32[%r2],{%r4, %r76, %r75, %r74, %r73, %r72, %r71, %r70};
+
+//
+//
+tcgen05.st.sync.aligned.32x32b.x8.b32[%r40],{%r4, %r76, %r75, %r74, %r73, %r72, %r71, %r70};
+
+//
+//
+tcgen05.wait::st.sync.aligned; 
+//
+bar.sync 0;
+bar.sync 0;
+setp.gt.u32 %p2, %r1, 127;
+@%p2 bra $L__BB0_4;
+bar.warp.sync -1;
+//
+mov.u64 %rd17, %clock64;
+//
+//
+tcgen05.ld.sync.aligned.32x32b.x8.b32{%r49, %r50, %r51, %r52, %r53, %r54, %r55, %r56},[%r40];
+
+//
+//
+tcgen05.ld.sync.aligned.32x32b.x8.b32{%r58, %r59, %r60, %r61, %r62, %r63, %r64, %r65},[%r2];
+
+//
+//
+tcgen05.wait::ld.sync.aligned; 
+//
+add.s32 %r67, %r58, %r49;
+add.s32 %r77, %r67, %r4;
+//
+mov.u64 %rd16, %clock64;
+//
+bra.uni $L__BB0_5;
+$L__BB0_4:
+mov.b32 %f1, %r4;
+add.f32 %f2, %f1, %f1;
+mov.b32 %f3, %r76;
+add.f32 %f4, %f3, %f3;
+mov.b32 %f5, %r75;
+add.f32 %f6, %f5, %f5;
+mov.b32 %f7, %r74;
+add.f32 %f8, %f7, %f7;
+mov.b32 %f9, %r73;
+add.f32 %f10, %f9, %f9;
+mov.b32 %f11, %r72;
+add.f32 %f12, %f11, %f11;
+mov.b32 %f13, %r71;
+add.f32 %f14, %f13, %f13;
+mov.b32 %f15, %r70;
+add.f32 %f16, %f15, %f15;
+mul.f32 %f17, %f2, %f2;
+mul.f32 %f18, %f4, %f4;
+mul.f32 %f19, %f6, %f6;
+mul.f32 %f20, %f8, %f8;
+mul.f32 %f21, %f10, %f10;
+mul.f32 %f22, %f12, %f12;
+mul.f32 %f23, %f14, %f14;
+mul.f32 %f24, %f16, %f16;
+sub.f32 %f25, %f17, %f17;
+sub.f32 %f26, %f18, %f18;
+sub.f32 %f27, %f19, %f19;
+sub.f32 %f28, %f20, %f20;
+sub.f32 %f29, %f21, %f21;
+sub.f32 %f30, %f22, %f22;
+sub.f32 %f31, %f23, %f23;
+sub.f32 %f32, %f24, %f24;
+mul.f32 %f33, %f25, %f25;
+mul.f32 %f34, %f26, %f26;
+mul.f32 %f35, %f27, %f27;
+mul.f32 %f36, %f28, %f28;
+mul.f32 %f37, %f29, %f29;
+mul.f32 %f38, %f30, %f30;
+mul.f32 %f39, %f31, %f31;
+mul.f32 %f40, %f32, %f32;
+sub.f32 %f41, %f33, %f33;
+sub.f32 %f42, %f34, %f34;
+sub.f32 %f43, %f35, %f35;
+sub.f32 %f44, %f36, %f36;
+sub.f32 %f45, %f37, %f37;
+sub.f32 %f46, %f38, %f38;
+sub.f32 %f47, %f39, %f39;
+sub.f32 %f48, %f40, %f40;
+mul.f32 %f49, %f41, %f41;
+mov.b32 %r77, %f49;
+mul.f32 %f50, %f42, %f42;
+mov.b32 %r76, %f50;
+mul.f32 %f51, %f43, %f43;
+mov.b32 %r75, %f51;
+mul.f32 %f52, %f44, %f44;
+mov.b32 %r74, %f52;
+mul.f32 %f53, %f45, %f45;
+mov.b32 %r73, %f53;
+mul.f32 %f54, %f46, %f46;
+mov.b32 %r72, %f54;
+mul.f32 %f55, %f47, %f47;
+mov.b32 %r71, %f55;
+mul.f32 %f56, %f48, %f48;
+mov.b32 %r70, %f56;
+$L__BB0_5:
+setp.gt.u32 %p3, %r1, 31;
+bar.sync 0;
+@%p3 bra $L__BB0_7;
+mov.b32 %r69, 512;
+//
+{
+tcgen05.dealloc.cta_group::1.sync.aligned.b32 %r2, %r69; 
+}
+//
+$L__BB0_7:
+bar.sync 0;
+setp.ne.s32 %p4, %r1, 0;
+@%p4 bra $L__BB0_9;
+cvta.to.global.u64 %rd14, %rd6;
+st.global.u64 [%rd14], %rd17;
+cvta.to.global.u64 %rd15, %rd7;
+st.global.u64 [%rd15], %rd16;
+$L__BB0_9:
+st.global.u32 [%rd1], %r77;
+st.global.u32 [%rd1+1024], %r76;
+st.global.u32 [%rd1+2048], %r75;
+st.global.u32 [%rd1+3072], %r74;
+st.global.u32 [%rd1+4096], %r73;
+st.global.u32 [%rd1+5120], %r72;
+st.global.u32 [%rd1+6144], %r71;
+st.global.u32 [%rd1+7168], %r70;
+ret;
+
+}
+
+
+Fatbin elf code:
+================
+arch = sm_100a
+code version = [1,8]
+host = linux
+compile_size = 64bit
+
+Fatbin ptx code:
+================
+arch = sm_100a
+code version = [8,7]
+host = linux
+compile_size = 64bit
+compressed
+ptxasOptions = -O3  
+
+//
+//
+//
+//
+//
+//
+
+.version 8.7
+.target sm_100a
+.address_size 64
+
+//
+//
+
+.visible .entry _Z24benchmarkTMEMLoadLatencyPyS_Pj(
+.param .u64 _Z24benchmarkTMEMLoadLatencyPyS_Pj_param_0,
+.param .u64 _Z24benchmarkTMEMLoadLatencyPyS_Pj_param_1,
+.param .u64 _Z24benchmarkTMEMLoadLatencyPyS_Pj_param_2
+)
+{
+.reg .pred %p<5>;
+.reg .b32 %r<78>;
+.reg .f32 %f<57>;
+.reg .b64 %rd<18>;
+//
+.shared .align 4 .b8 _ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem[32768];
+ld.param.u64 %rd6, [_Z24benchmarkTMEMLoadLatencyPyS_Pj_param_0];
+ld.param.u64 %rd7, [_Z24benchmarkTMEMLoadLatencyPyS_Pj_param_1];
+ld.param.u64 %rd8, [_Z24benchmarkTMEMLoadLatencyPyS_Pj_param_2];
+mov.u32 %r1, %tid.x;
+setp.gt.u32 %p1, %r1, 31;
+@%p1 bra $L__BB0_2;
+mov.u32 %r29, _ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem;
+mov.b32 %r30, 512;
+//
+tcgen05.alloc.cta_group::1.sync.aligned.shared::cta.b32 [%r29], %r30;
+//
+$L__BB0_2:
+bar.sync 0;
+ld.shared.u32 %r2, [_ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem];
+add.s32 %r40, %r2, 128;
+cvta.to.global.u64 %rd9, %rd8;
+mul.wide.u32 %rd10, %r1, 4;
+add.s64 %rd1, %rd9, %rd10;
+ld.global.u32 %r4, [%rd1];
+ld.global.u32 %r76, [%rd1+1024];
+ld.global.u32 %r75, [%rd1+2048];
+ld.global.u32 %r74, [%rd1+3072];
+ld.global.u32 %r73, [%rd1+4096];
+ld.global.u32 %r72, [%rd1+5120];
+ld.global.u32 %r71, [%rd1+6144];
+ld.global.u32 %r70, [%rd1+7168];
+//
+tcgen05.st.sync.aligned.32x32b.x8.b32[%r2],{%r4, %r76, %r75, %r74, %r73, %r72, %r71, %r70};
+
+//
+//
+tcgen05.st.sync.aligned.32x32b.x8.b32[%r40],{%r4, %r76, %r75, %r74, %r73, %r72, %r71, %r70};
+
+//
+//
+tcgen05.wait::st.sync.aligned; 
+//
+bar.sync 0;
+bar.sync 0;
+setp.gt.u32 %p2, %r1, 127;
+@%p2 bra $L__BB0_4;
+bar.warp.sync -1;
+//
+mov.u64 %rd17, %clock64;
+//
+//
+tcgen05.ld.sync.aligned.32x32b.x8.b32{%r49, %r50, %r51, %r52, %r53, %r54, %r55, %r56},[%r40];
+
+//
+//
+tcgen05.ld.sync.aligned.32x32b.x8.b32{%r58, %r59, %r60, %r61, %r62, %r63, %r64, %r65},[%r2];
+
+//
+//
+tcgen05.wait::ld.sync.aligned; 
+//
+add.s32 %r67, %r58, %r49;
+add.s32 %r77, %r67, %r4;
+//
+mov.u64 %rd16, %clock64;
+//
+bra.uni $L__BB0_5;
+$L__BB0_4:
+mov.b32 %f1, %r4;
+add.f32 %f2, %f1, %f1;
+mov.b32 %f3, %r76;
+add.f32 %f4, %f3, %f3;
+mov.b32 %f5, %r75;
+add.f32 %f6, %f5, %f5;
+mov.b32 %f7, %r74;
+add.f32 %f8, %f7, %f7;
+mov.b32 %f9, %r73;
+add.f32 %f10, %f9, %f9;
+mov.b32 %f11, %r72;
+add.f32 %f12, %f11, %f11;
+mov.b32 %f13, %r71;
+add.f32 %f14, %f13, %f13;
+mov.b32 %f15, %r70;
+add.f32 %f16, %f15, %f15;
+mul.f32 %f17, %f2, %f2;
+mul.f32 %f18, %f4, %f4;
+mul.f32 %f19, %f6, %f6;
+mul.f32 %f20, %f8, %f8;
+mul.f32 %f21, %f10, %f10;
+mul.f32 %f22, %f12, %f12;
+mul.f32 %f23, %f14, %f14;
+mul.f32 %f24, %f16, %f16;
+sub.f32 %f25, %f17, %f17;
+sub.f32 %f26, %f18, %f18;
+sub.f32 %f27, %f19, %f19;
+sub.f32 %f28, %f20, %f20;
+sub.f32 %f29, %f21, %f21;
+sub.f32 %f30, %f22, %f22;
+sub.f32 %f31, %f23, %f23;
+sub.f32 %f32, %f24, %f24;
+mul.f32 %f33, %f25, %f25;
+mul.f32 %f34, %f26, %f26;
+mul.f32 %f35, %f27, %f27;
+mul.f32 %f36, %f28, %f28;
+mul.f32 %f37, %f29, %f29;
+mul.f32 %f38, %f30, %f30;
+mul.f32 %f39, %f31, %f31;
+mul.f32 %f40, %f32, %f32;
+sub.f32 %f41, %f33, %f33;
+sub.f32 %f42, %f34, %f34;
+sub.f32 %f43, %f35, %f35;
+sub.f32 %f44, %f36, %f36;
+sub.f32 %f45, %f37, %f37;
+sub.f32 %f46, %f38, %f38;
+sub.f32 %f47, %f39, %f39;
+sub.f32 %f48, %f40, %f40;
+mul.f32 %f49, %f41, %f41;
+mov.b32 %r77, %f49;
+mul.f32 %f50, %f42, %f42;
+mov.b32 %r76, %f50;
+mul.f32 %f51, %f43, %f43;
+mov.b32 %r75, %f51;
+mul.f32 %f52, %f44, %f44;
+mov.b32 %r74, %f52;
+mul.f32 %f53, %f45, %f45;
+mov.b32 %r73, %f53;
+mul.f32 %f54, %f46, %f46;
+mov.b32 %r72, %f54;
+mul.f32 %f55, %f47, %f47;
+mov.b32 %r71, %f55;
+mul.f32 %f56, %f48, %f48;
+mov.b32 %r70, %f56;
+$L__BB0_5:
+setp.gt.u32 %p3, %r1, 31;
+bar.sync 0;
+@%p3 bra $L__BB0_7;
+mov.b32 %r69, 512;
+//
+{
+tcgen05.dealloc.cta_group::1.sync.aligned.b32 %r2, %r69; 
+}
+//
+$L__BB0_7:
+bar.sync 0;
+setp.ne.s32 %p4, %r1, 0;
+@%p4 bra $L__BB0_9;
+cvta.to.global.u64 %rd14, %rd6;
+st.global.u64 [%rd14], %rd17;
+cvta.to.global.u64 %rd15, %rd7;
+st.global.u64 [%rd15], %rd16;
+$L__BB0_9:
+st.global.u32 [%rd1], %r77;
+st.global.u32 [%rd1+1024], %r76;
+st.global.u32 [%rd1+2048], %r75;
+st.global.u32 [%rd1+3072], %r74;
+st.global.u32 [%rd1+4096], %r73;
+st.global.u32 [%rd1+5120], %r72;
+st.global.u32 [%rd1+6144], %r71;
+st.global.u32 [%rd1+7168], %r70;
+ret;
+
+}
+

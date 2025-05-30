@@ -1,0 +1,282 @@
+
+Fatbin elf code:
+================
+arch = sm_100a
+code version = [1,8]
+host = linux
+compile_size = 64bit
+
+Fatbin ptx code:
+================
+arch = sm_100
+code version = [8,7]
+host = linux
+compile_size = 64bit
+compressed
+ptxasOptions = -O3  
+
+//
+//
+//
+//
+//
+//
+
+.version 8.7
+.target sm_100
+.address_size 64
+
+//
+//
+
+.visible .entry _Z24benchmarkTMEMLoadLatencyPyS_Pj(
+.param .u64 _Z24benchmarkTMEMLoadLatencyPyS_Pj_param_0,
+.param .u64 _Z24benchmarkTMEMLoadLatencyPyS_Pj_param_1,
+.param .u64 _Z24benchmarkTMEMLoadLatencyPyS_Pj_param_2
+)
+{
+.reg .pred %p<5>;
+.reg .b32 %r<30>;
+.reg .f32 %f<15>;
+.reg .b64 %rd<18>;
+//
+.shared .align 4 .b8 _ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem[32768];
+ld.param.u64 %rd6, [_Z24benchmarkTMEMLoadLatencyPyS_Pj_param_0];
+ld.param.u64 %rd7, [_Z24benchmarkTMEMLoadLatencyPyS_Pj_param_1];
+ld.param.u64 %rd8, [_Z24benchmarkTMEMLoadLatencyPyS_Pj_param_2];
+mov.u32 %r1, %tid.x;
+setp.gt.u32 %p1, %r1, 31;
+@%p1 bra $L__BB0_2;
+mov.u32 %r11, _ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem;
+mov.b32 %r12, 512;
+//
+tcgen05.alloc.cta_group::1.sync.aligned.shared::cta.b32 [%r11], %r12;
+//
+$L__BB0_2:
+bar.sync 0;
+ld.shared.u32 %r2, [_ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem];
+add.s32 %r16, %r2, 128;
+cvta.to.global.u64 %rd9, %rd8;
+mul.wide.u32 %rd10, %r1, 4;
+add.s64 %rd1, %rd9, %rd10;
+ld.global.u32 %r4, [%rd1];
+ld.global.u32 %r28, [%rd1+1024];
+//
+tcgen05.st.sync.aligned.32x32b.x2.b32[%r2],{%r4, %r28};
+
+//
+//
+tcgen05.st.sync.aligned.32x32b.x2.b32[%r16],{%r4, %r28};
+
+//
+//
+tcgen05.wait::st.sync.aligned; 
+//
+bar.sync 0;
+bar.sync 0;
+setp.gt.u32 %p2, %r1, 127;
+@%p2 bra $L__BB0_4;
+bar.warp.sync -1;
+//
+mov.u64 %rd17, %clock64;
+//
+//
+tcgen05.ld.sync.aligned.32x32b.x2.b32{%r19, %r20},[%r16];
+
+//
+//
+tcgen05.ld.sync.aligned.32x32b.x2.b32{%r22, %r23},[%r2];
+
+//
+//
+tcgen05.wait::ld.sync.aligned; 
+//
+add.s32 %r25, %r22, %r19;
+add.s32 %r29, %r25, %r4;
+//
+mov.u64 %rd16, %clock64;
+//
+bra.uni $L__BB0_5;
+$L__BB0_4:
+mov.b32 %f1, %r4;
+add.f32 %f2, %f1, %f1;
+mov.b32 %f3, %r28;
+add.f32 %f4, %f3, %f3;
+mul.f32 %f5, %f2, %f2;
+mul.f32 %f6, %f4, %f4;
+sub.f32 %f7, %f5, %f5;
+sub.f32 %f8, %f6, %f6;
+mul.f32 %f9, %f7, %f7;
+mul.f32 %f10, %f8, %f8;
+sub.f32 %f11, %f9, %f9;
+sub.f32 %f12, %f10, %f10;
+mul.f32 %f13, %f11, %f11;
+mov.b32 %r29, %f13;
+mul.f32 %f14, %f12, %f12;
+mov.b32 %r28, %f14;
+$L__BB0_5:
+setp.gt.u32 %p3, %r1, 31;
+bar.sync 0;
+@%p3 bra $L__BB0_7;
+mov.b32 %r27, 512;
+//
+{
+tcgen05.dealloc.cta_group::1.sync.aligned.b32 %r2, %r27; 
+}
+//
+$L__BB0_7:
+bar.sync 0;
+setp.ne.s32 %p4, %r1, 0;
+@%p4 bra $L__BB0_9;
+cvta.to.global.u64 %rd14, %rd6;
+st.global.u64 [%rd14], %rd17;
+cvta.to.global.u64 %rd15, %rd7;
+st.global.u64 [%rd15], %rd16;
+$L__BB0_9:
+st.global.u32 [%rd1], %r29;
+st.global.u32 [%rd1+1024], %r28;
+ret;
+
+}
+
+
+Fatbin elf code:
+================
+arch = sm_100a
+code version = [1,8]
+host = linux
+compile_size = 64bit
+
+Fatbin ptx code:
+================
+arch = sm_100a
+code version = [8,7]
+host = linux
+compile_size = 64bit
+compressed
+ptxasOptions = -O3  
+
+//
+//
+//
+//
+//
+//
+
+.version 8.7
+.target sm_100a
+.address_size 64
+
+//
+//
+
+.visible .entry _Z24benchmarkTMEMLoadLatencyPyS_Pj(
+.param .u64 _Z24benchmarkTMEMLoadLatencyPyS_Pj_param_0,
+.param .u64 _Z24benchmarkTMEMLoadLatencyPyS_Pj_param_1,
+.param .u64 _Z24benchmarkTMEMLoadLatencyPyS_Pj_param_2
+)
+{
+.reg .pred %p<5>;
+.reg .b32 %r<30>;
+.reg .f32 %f<15>;
+.reg .b64 %rd<18>;
+//
+.shared .align 4 .b8 _ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem[32768];
+ld.param.u64 %rd6, [_Z24benchmarkTMEMLoadLatencyPyS_Pj_param_0];
+ld.param.u64 %rd7, [_Z24benchmarkTMEMLoadLatencyPyS_Pj_param_1];
+ld.param.u64 %rd8, [_Z24benchmarkTMEMLoadLatencyPyS_Pj_param_2];
+mov.u32 %r1, %tid.x;
+setp.gt.u32 %p1, %r1, 31;
+@%p1 bra $L__BB0_2;
+mov.u32 %r11, _ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem;
+mov.b32 %r12, 512;
+//
+tcgen05.alloc.cta_group::1.sync.aligned.shared::cta.b32 [%r11], %r12;
+//
+$L__BB0_2:
+bar.sync 0;
+ld.shared.u32 %r2, [_ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem];
+add.s32 %r16, %r2, 128;
+cvta.to.global.u64 %rd9, %rd8;
+mul.wide.u32 %rd10, %r1, 4;
+add.s64 %rd1, %rd9, %rd10;
+ld.global.u32 %r4, [%rd1];
+ld.global.u32 %r28, [%rd1+1024];
+//
+tcgen05.st.sync.aligned.32x32b.x2.b32[%r2],{%r4, %r28};
+
+//
+//
+tcgen05.st.sync.aligned.32x32b.x2.b32[%r16],{%r4, %r28};
+
+//
+//
+tcgen05.wait::st.sync.aligned; 
+//
+bar.sync 0;
+bar.sync 0;
+setp.gt.u32 %p2, %r1, 127;
+@%p2 bra $L__BB0_4;
+bar.warp.sync -1;
+//
+mov.u64 %rd17, %clock64;
+//
+//
+tcgen05.ld.sync.aligned.32x32b.x2.b32{%r19, %r20},[%r16];
+
+//
+//
+tcgen05.ld.sync.aligned.32x32b.x2.b32{%r22, %r23},[%r2];
+
+//
+//
+tcgen05.wait::ld.sync.aligned; 
+//
+add.s32 %r25, %r22, %r19;
+add.s32 %r29, %r25, %r4;
+//
+mov.u64 %rd16, %clock64;
+//
+bra.uni $L__BB0_5;
+$L__BB0_4:
+mov.b32 %f1, %r4;
+add.f32 %f2, %f1, %f1;
+mov.b32 %f3, %r28;
+add.f32 %f4, %f3, %f3;
+mul.f32 %f5, %f2, %f2;
+mul.f32 %f6, %f4, %f4;
+sub.f32 %f7, %f5, %f5;
+sub.f32 %f8, %f6, %f6;
+mul.f32 %f9, %f7, %f7;
+mul.f32 %f10, %f8, %f8;
+sub.f32 %f11, %f9, %f9;
+sub.f32 %f12, %f10, %f10;
+mul.f32 %f13, %f11, %f11;
+mov.b32 %r29, %f13;
+mul.f32 %f14, %f12, %f12;
+mov.b32 %r28, %f14;
+$L__BB0_5:
+setp.gt.u32 %p3, %r1, 31;
+bar.sync 0;
+@%p3 bra $L__BB0_7;
+mov.b32 %r27, 512;
+//
+{
+tcgen05.dealloc.cta_group::1.sync.aligned.b32 %r2, %r27; 
+}
+//
+$L__BB0_7:
+bar.sync 0;
+setp.ne.s32 %p4, %r1, 0;
+@%p4 bra $L__BB0_9;
+cvta.to.global.u64 %rd14, %rd6;
+st.global.u64 [%rd14], %rd17;
+cvta.to.global.u64 %rd15, %rd7;
+st.global.u64 [%rd15], %rd16;
+$L__BB0_9:
+st.global.u32 [%rd1], %r29;
+st.global.u32 [%rd1+1024], %r28;
+ret;
+
+}
+

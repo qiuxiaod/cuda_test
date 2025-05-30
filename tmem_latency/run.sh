@@ -53,6 +53,18 @@ do
         CUDA_VISIBLE_DEVICES=${device_id} ./main_mode2_$rep.o
     done
 
+    # Compile the CUDA program with the current value of rep
+    echo "============================================================================="
+    echo "=========== Test fpu + tcgen05.ld+ld.sync.aligned.32x32b.x${rep} =================="
+    echo "============================================================================="
+    nvcc -arch=sm_100a -Xptxas -O3 -DREP=$rep -DTEST_MODE=4 -DTHD_NUM=256 -o main_mode4_$rep.o main.cu
+    cuobjdump --dump-ptx main_mode4_$rep.o > main_mode4_$rep.ptx
+    cuobjdump --dump-sass main_mode4_$rep.o > main_mode4_$rep.sass
+    for itr in {0..7}
+    do
+        CUDA_VISIBLE_DEVICES=${device_id} ./main_mode4_$rep.o
+    done
+
     echo  "  "
     echo  "  "
 done
