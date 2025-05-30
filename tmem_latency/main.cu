@@ -1,5 +1,5 @@
 #include <iostream>
-#include "inline_ptx_func.hpp"
+#include "../inline_ptx_func.hpp"
 #include <cuda_runtime.h>
 
 #define SHARED_MEM_SIZE 32
