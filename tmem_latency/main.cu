@@ -2,7 +2,7 @@
 #include "../inline_ptx_func.hpp"
 #include <cuda_runtime.h>
 
-#define SHARED_MEM_SIZE 8192
+#define SHARED_MEM_SIZE (8192 + 256)
 #define WARP_SIZE 32
 
 #ifndef THD_NUM
@@ -137,7 +137,31 @@ __global__ void benchmarkTMEMLoadLatency(unsigned long long *d_start, unsigned l
            
             // data[0] = (uint32_t)val_array_f32[0];
         }
-        
+#elif TEST_MODE == 5
+        uint32_t val_array_tmp1[REP];
+        __syncthreads();
+        __syncwarp();
+        constexpr int M = 128;
+        constexpr int N = 128;
+        constexpr int K = 64; // wg_k
+        if(tid == 0){
+            InstrDescriptor idesc = make_instr_desc<M, N>();
+            SmemDescriptor desc_a = make_smem_desc<M, K>((uint16_t*) sharedMem);
+            SmemDescriptor desc_b = make_smem_desc<M, K>((uint16_t*) (sharedMem + 4096));
+            amma_fp16bf16_ss<M, N>(uint64_t(desc_a), uint64_t (desc_b), tmem_ptr, uint32_t(idesc));
+            amma_fp16bf16_ss<M, N>(uint64_t(desc_a), uint64_t (desc_b), tmem_ptr, uint32_t(idesc));
+            amma_fp16bf16_ss<M, N>(uint64_t(desc_a), uint64_t (desc_b), tmem_ptr, uint32_t(idesc));
+            amma_fp16bf16_ss<M, N>(uint64_t(desc_a), uint64_t (desc_b), tmem_ptr, uint32_t(idesc));
+        }
+        __syncwarp();
+        start[0] = clock64();
+
+        tmem_ld_32dp32bNx<REP>(tmem_ptr1, val_array_tmp1);
+        tmem_ld_32dp32bNx<REP>(tmem_ptr, val_array_tmp);
+        fence_view_async_tmem_load();
+
+        val_array[0] += val_array_tmp[0] + val_array_tmp1[0];
+        end[0] = clock64();
 #endif
     // if(warp_id < 4){
 
@@ -199,6 +223,9 @@ int main() {
     #elif TEST_MODE == 4
         double latency = (h_end[0] - h_start[0]);
         std::cout << "TMEM FPU + Load[0] + Load[1] Latency: " << latency << " clock cycles" << std::endl;
+    #elif TEST_MODE == 5
+        double latency = (h_end[0] - h_start[0]);
+        std::cout << "TMEM AMMA + Load[0] + Load[1] Latency: " << latency << " clock cycles" << std::endl;
     #endif
     // Clean up
     cudaFree(d_start);

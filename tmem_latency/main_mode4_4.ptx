@@ -40,7 +40,7 @@ ptxasOptions = -O3
 .reg .f32 %f<29>;
 .reg .b64 %rd<18>;
 //
-.shared .align 4 .b8 _ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem[32768];
+.shared .align 4 .b8 _ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem[33792];
 ld.param.u64 %rd6, [_Z24benchmarkTMEMLoadLatencyPyS_Pj_param_0];
 ld.param.u64 %rd7, [_Z24benchmarkTMEMLoadLatencyPyS_Pj_param_1];
 ld.param.u64 %rd8, [_Z24benchmarkTMEMLoadLatencyPyS_Pj_param_2];
@@ -201,7 +201,7 @@ ptxasOptions = -O3
 .reg .f32 %f<29>;
 .reg .b64 %rd<18>;
 //
-.shared .align 4 .b8 _ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem[32768];
+.shared .align 4 .b8 _ZZ24benchmarkTMEMLoadLatencyPyS_PjE9sharedMem[33792];
 ld.param.u64 %rd6, [_Z24benchmarkTMEMLoadLatencyPyS_Pj_param_0];
 ld.param.u64 %rd7, [_Z24benchmarkTMEMLoadLatencyPyS_Pj_param_1];
 ld.param.u64 %rd8, [_Z24benchmarkTMEMLoadLatencyPyS_Pj_param_2];
